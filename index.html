@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Hafshah Aulia Love Effect</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: radial-gradient(circle, #000000 40%, #050505 100%);
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 🔥 TEKS GLOW + TEBEL */
+.text {
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 10px #ffffff,
+        0 0 20px #ff9bd3,
+        0 0 30px #ff4da6;
+}
+
+/* ❤️ HATI */
+.heart {
+    color: #ff2b2b;
+    text-shadow:
+        0 0 5px #ff2b2b,
+        0 0 10px #ff2b2b,
+        0 0 20px red;
+}
+
+/* 📸 FOTO */
+.photo {
+    width: 90px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-top: 8px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.7);
+}
+
+/* 🔥 WRAPPER ITEM */
+.item {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fall 10s linear infinite;
+}
+
+/* ⬇️ ANIMASI TURUN */
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) scale(0.6);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) scale(1.1);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="container"></div>
+
+<script>
+const container = document.getElementById("container");
+
+/* ✅ SUDAH PAKAI FOTO KAMU */
+const fotoURL = "IMG_20260425_192818.jpg";
+
+function createItem() {
+    const item = document.createElement("div");
+    item.className = "item";
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.animationDuration = (6 + Math.random() * 6) + "s";
+
+    // teks
+    const text = document.createElement("div");
+    text.className = "text";
+    text.innerHTML = "Hafshah Aulia <span class='heart'>❤</span>";
+
+    // foto
+    const img = document.createElement("img");
+    img.src = fotoURL;
+    img.className = "photo";
+
+    item.appendChild(text);
+    item.appendChild(img);
+
+    container.appendChild(item);
+
+    setTimeout(() => {
+        item.remove();
+    }, 12000);
+}
+
+setInterval(createItem, 400);
+</script>
+
+</body>
+</html>
